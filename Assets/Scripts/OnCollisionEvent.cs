@@ -12,7 +12,6 @@ public class OnCollisionEvent : MonoBehaviour
         if (gameEvent != null && !collision.gameObject.CompareTag("Ring"))
         {
             gameEvent.Raise();
-            Debug.Log("Collision occured");
         }
     }
 }
