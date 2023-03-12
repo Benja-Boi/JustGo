@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrackTime : MonoBehaviour
 {
+    public GameEvent debugEvent;
     private bool enteredER = false;
     private float timePassed = 0f;
 
@@ -18,6 +19,7 @@ public class TrackTime : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))//debuging
         {
             Debug.Log(timePassed);
+            debugEvent.Raise();
         }
     }
 

@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 2972223576413139704}
   m_Layer: 0
   m_Name: Safe_Black_Model
-  m_TagString: InteractiveObject
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
