@@ -4,32 +4,38 @@ using UnityEngine;
 
 public class TrackTime : MonoBehaviour
 {
-    public GameEvent debugEvent;
-    private bool enteredER = false;
-    private float timePassed = 0f;
+    public GameEventFloat reportNewResult;
+    private bool isRunning = false;
+    public float timePassed = 0f;
 
     // Update is called once per frame
     void Update()
     {
-        if (enteredER)
+        if (isRunning)
         {
             timePassed += Time.deltaTime;
         }
-
-        if (Input.GetKeyDown(KeyCode.T))//debuging
-        {
-            Debug.Log(timePassed);
-            debugEvent.Raise();
-        }
     }
 
-    public void TurnTimerOn()
+    public void StartTimer()
     {
-        enteredER = true;
+        isRunning = true;
     }
 
-    public void TurnTimerOff()
+    public void StopTimer()
     {
-        enteredER= false;
+        isRunning= false;
+        ReportResult(timePassed);
+        ResetTimer();
+    }
+
+    public void ResetTimer()
+    {
+        timePassed = 0;
+    }
+
+    private void ReportResult(float result)
+    {
+        reportNewResult.Raise(result);
     }
 }

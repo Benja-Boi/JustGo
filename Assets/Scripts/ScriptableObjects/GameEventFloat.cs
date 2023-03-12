@@ -3,24 +3,24 @@ using ScriptableObjects;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class GameEvent : ScriptableObject
+public class GameEventFloat : ScriptableObject
 {
-    private readonly List<GameEventListener> eventListeners = new List<GameEventListener>();
+    private readonly List<GameEventListenerFloat> eventListeners = new List<GameEventListenerFloat>();
 
-    public void Raise()
+    public void Raise(float value)
     {
         Debug.Log(this.name + "Event raised");
         for(int i = eventListeners.Count -1; i >= 0; i--)
-            eventListeners[i].OnEventRaised();
+            eventListeners[i].OnEventRaised(value);
     }
 
-    public void RegisterListener(GameEventListener listener)
+    public void RegisterListener(GameEventListenerFloat listener)
     {
         if (!eventListeners.Contains(listener))
             eventListeners.Add(listener);
     }
 
-    public void UnregisterListener(GameEventListener listener)
+    public void UnregisterListener(GameEventListenerFloat listener)
     {
         if (eventListeners.Contains(listener))
             eventListeners.Remove(listener);
