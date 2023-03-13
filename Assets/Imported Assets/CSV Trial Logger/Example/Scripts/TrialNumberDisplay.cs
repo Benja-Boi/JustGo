@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 
 public class TrialNumberDisplay : MonoBehaviour {
@@ -12,10 +13,9 @@ public class TrialNumberDisplay : MonoBehaviour {
         text = GetComponent<Text>();
 	}
 	
-
     // called after a trial ends
-    public void UpdateTrialNumber(int num)
+    public void UpdateTrialNumber(float seconds)
     {
-        text.text = string.Format("Trial {0}", num);
+        text.text = string.Format("Time Passed: {0}", TimeSpan.FromSeconds((double)(new decimal(seconds))).ToString());
     }
 }

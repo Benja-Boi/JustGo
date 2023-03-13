@@ -32,7 +32,7 @@ public class ExampleExperimentController : MonoBehaviour {
         trialLogger.StartTrial();
 
         // now we update the trial number on screen
-        trialNumDisplay.UpdateTrialNumber(trialLogger.currentTrialNumber);
+        //trialNumDisplay.UpdateTrialNumber(trialLogger.currentTrialNumber);
     }
 
     // Update is called once per frame
@@ -55,14 +55,14 @@ public class ExampleExperimentController : MonoBehaviour {
 
         // if we are at the max number of trials, we quit the game
         // note: CSV is saved on exit automatically
-        if (trialLogger.currentTrialNumber >= numberOfTrials) QuitGame();
+        //if (trialLogger.currentTrialNumber >= numberOfTrials) QuitGame();
 
         // here we could have some time for feedback, loading the next trial etc
         // but we will just start the next trial immediately
         trialLogger.StartTrial();
 
         // now we update the trial number on screen
-        trialNumDisplay.UpdateTrialNumber(trialLogger.currentTrialNumber);
+        //trialNumDisplay.UpdateTrialNumber(trialLogger.currentTrialNumber);
     }
 
 

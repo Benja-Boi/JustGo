@@ -47,8 +47,8 @@ public class SphereController : MonoBehaviour {
     void MoveSphere()
     {
         // generate random x, y position
-        float x = Random.Range(-3F, 3F);
-        float y = Random.Range(-3F, 3F);
+        float x = 0f;
+        float y = 0f;
 
         // set position to new x, y keeps z
         Vector3 oldPos = gameObject.transform.position;

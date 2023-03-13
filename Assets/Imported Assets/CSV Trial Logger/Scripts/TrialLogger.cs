@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System;
 
 public class TrialLogger : MonoBehaviour {
 
-    public int currentTrialNumber = 0;    
+    private float seconds = 0f;
+    public string timePassed = TimeSpan.FromSeconds((double)new decimal(0f)).ToString();
     List<string> header;
     [HideInInspector]
     public Dictionary<string, string> trial;
@@ -64,9 +66,10 @@ public class TrialLogger : MonoBehaviour {
     public void StartTrial()
     {
         trialStarted = true;
-        currentTrialNumber += 1;
+        seconds += 1;
         InitDict();
-        trial["number"] = currentTrialNumber.ToString();
+        timePassed = TSTS(seconds);
+        trial["Time"] = timePassed;
         trial["ppid"] = ppid;
         trial["start_time"] = Time.time.ToString();
     }
@@ -109,5 +112,10 @@ public class TrialLogger : MonoBehaviour {
         }
         else Debug.LogError("Error saving data - TrialLogger was not initialsed properly");
         
+    }
+
+    private string TSTS(float f_secs)
+    {
+        return TimeSpan.FromSeconds((double)new decimal(f_secs)).ToString();
     }
 }
