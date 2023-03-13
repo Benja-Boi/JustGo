@@ -6,31 +6,32 @@ using ScriptableObjects;
 
 namespace CSharpObjects
 {
+    [Serializable]
     public class ScoreObject
     {
-        public TimeSpan Value;
+        public float TimeInSeconds;
         public string playerName;
 
-        public ScoreObject(float value)
+        public ScoreObject(float timeInSeconds)
         {
-            Value = TimeSpan.FromSeconds(value);
+            TimeInSeconds = timeInSeconds;
         }
     
-        public ScoreObject(float value, string name)
+        public ScoreObject(float timeInSeconds, string name)
         {
-            Value = TimeSpan.FromSeconds(value);
+            TimeInSeconds = timeInSeconds;
             playerName = name;
         }
     
         public void SetValue(float value, string name)
         {
-            Value = TimeSpan.FromSeconds(value);
+            TimeInSeconds = value;
             playerName = name;
         }
 
         public void SetValue(FloatVariable value, string name)
         {
-            Value = TimeSpan.FromSeconds(value.Value);
+            TimeInSeconds = value.Value;
             playerName = name;
         }
     } 

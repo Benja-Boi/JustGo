@@ -7,7 +7,6 @@ using UnityEngine;
 namespace ScriptableObjects
 {
     [CreateAssetMenu]
-    [Serializable]
     public class ScoreData : ScriptableObject
     {
         public List<ScoreObject> scores = new List<ScoreObject>();
@@ -15,7 +14,7 @@ namespace ScriptableObjects
         public void RegisterScore(ScoreObject newScore)
         {
             scores.Add(newScore);
-            scores.Sort((x, y) => x.Value.TotalSeconds.CompareTo(y.Value.TotalSeconds));
+            scores.Sort((x, y) => x.TimeInSeconds.CompareTo(y.TimeInSeconds));
         }
 
         public string[] getHighScores(int numScores)
@@ -23,7 +22,8 @@ namespace ScriptableObjects
             string[] results = new string[numScores];
             for (int i = 0; i < numScores; i++)
             {
-                results[i] = scores[i].playerName + " : " + scores[i].Value.ToString(@"hh\:mm\:ss");
+                TimeSpan valueAsSpan = TimeSpan.FromSeconds(scores[i].TimeInSeconds);
+                results[i] = scores[i].playerName + " : " + valueAsSpan.ToString(@"hh\:mm\:ss");
             }
 
             return results;
@@ -33,7 +33,7 @@ namespace ScriptableObjects
         {
             foreach (ScoreObject score in scores)
             {
-                Debug.Log(score.playerName + " : " + score.Value.ToString(@"hh\:mm\:ss"));
+                Debug.Log(score.playerName + " : " + score.TimeInSeconds.ToString(@"hh\:mm\:ss"));
             }
         }
     }
