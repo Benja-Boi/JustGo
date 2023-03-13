@@ -11,7 +11,7 @@ public class UpdateScoreText : MonoBehaviour
     [SerializeField] private int number;
     [SerializeField] private ScoreData scoreData;
     
-    void Start()
+    void Awake()
     {
         txt = GetComponent<Text>();
     }

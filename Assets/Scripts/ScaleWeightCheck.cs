@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using ScriptableObjects;
 using UnityEngine;
 
 public class ScaleWeightCheck : MonoBehaviour
 {
     public GameEvent gameEvent;
-
+    public FloatVariable currWeight;
+    
     private float targetWeight = 13f;
     
     public float cube2Mass;
@@ -40,7 +42,9 @@ public class ScaleWeightCheck : MonoBehaviour
 
     private void Update()
     {
-        if ((cube2Mass + cube3Mass + cube4Mass + cube5Mass + candleMass) == targetWeight)
+        float weigth = (cube2Mass + cube3Mass + cube4Mass + cube5Mass + candleMass);
+        currWeight.Value = weigth;
+        if (weigth == targetWeight)
         {
             gameEvent.Raise();
         }
