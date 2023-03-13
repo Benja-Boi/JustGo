@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnteredRoom : MonoBehaviour
 {
     public GameEvent roomEntered;
-    public GameEvent sliding;
+    public GameEvent roomLeft;
     private bool invoked = false;
 
     void Start()
@@ -22,13 +22,26 @@ public class EnteredRoom : MonoBehaviour
             invoked = true;
             StartCoroutine(WaitSeconds());
         }
+
+        if(transform.localPosition.z <= 2.3 && invoked)
+        {
+            invoked = false;
+            StartCoroutine(WaitSeconds());
+        }
     }
 
     private IEnumerator WaitSeconds()
     {
         yield return new WaitForSeconds(3f);
 
-        sliding.Raise();
-        roomEntered.Raise();
+        if (invoked)
+        {
+            roomEntered.Raise();
+        }
+        else
+        {
+            roomLeft.Raise();
+        }
+        
     }
 }

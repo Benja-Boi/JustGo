@@ -27,6 +27,8 @@ public class TwoColliderTrigger : MonoBehaviour
             {
                 triggeredEvent.Raise();
                 invoked = true;
+                timerRunning = false;
+                timer = triggerDelay;
             }
             
             if (timerRunning)

@@ -7,12 +7,12 @@ public class SimpleTrigger : MonoBehaviour
 {
     public bool isTriggered = false;
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         isTriggered = true;
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         isTriggered = false;
     }

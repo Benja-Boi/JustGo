@@ -17,7 +17,6 @@ using UnityEngine;
 
 namespace ScriptableObjects
 {
-    [CreateAssetMenu]
     public class ScoreVariable
     {
         public TimeSpan Value;

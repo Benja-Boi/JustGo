@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class Resizable : MonoBehaviour, IResizable
 {
@@ -10,7 +11,7 @@ public class Resizable : MonoBehaviour, IResizable
     public float minScale = 2;
 
     private Transform trns;
-    
+
     private void Start()
     {
         trns = GetComponent<Transform>();
@@ -18,24 +19,28 @@ public class Resizable : MonoBehaviour, IResizable
 
     public void Shrink(float amount)
     {
-        Debug.Log("Amount= " + amount);
-        Debug.Log("Old scale= " + trns.localScale.x);
         if (trns.localScale.x - amount > minScale)
         {
-            Debug.Log("Expected scale= " + (trns.localScale.x - amount));
             trns.localScale -= amount * Vector3.one;
-            Debug.Log("New scale= " + trns.localScale.x);
+            PatchGrabbableScale(trns.localScale);
         }
     }
-    
+
     public void Enlarge(float amount)
     {
-        Debug.Log("old scale= " + trns.localScale.x);
         if (trns.localScale.x + amount < maxScale)
         {
             trns.localScale += amount * Vector3.one;
-            Debug.Log("new scale= " + trns.localScale.x);
+            PatchGrabbableScale(trns.localScale);
         }
     }
-    
+
+    public void PatchGrabbableScale(Vector3 val)
+    {
+        XRGrabInteractable cmp = GetComponent<XRGrabInteractable>();
+        System.Reflection.FieldInfo field = cmp.GetType().GetField("m_TargetLocalScale", System.Reflection.BindingFlags.NonPublic |
+            System.Reflection.BindingFlags.Instance);
+        field.SetValue(cmp, val);
+    }
+
 }

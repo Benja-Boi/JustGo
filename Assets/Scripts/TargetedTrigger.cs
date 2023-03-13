@@ -23,6 +23,5 @@ public class TargetedTrigger : MonoBehaviour
         {
             isTriggered = false;
         }
-        
     }
 }
