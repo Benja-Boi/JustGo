@@ -6,8 +6,8 @@ using System;
 
 public class TrialLogger : MonoBehaviour {
 
-    private float seconds = 0f;
-    public string timePassed = TimeSpan.FromSeconds((double)new decimal(0f)).ToString();
+    //private float seconds = 0f;
+    //public string timePassed = TimeSpan.FromSeconds((double)new decimal(0f)).ToString();
     List<string> header;
     [HideInInspector]
     public Dictionary<string, string> trial;
@@ -15,7 +15,7 @@ public class TrialLogger : MonoBehaviour {
     public string outputFolder;
 
     bool trialStarted = false;
-    string ppid;
+    string playerName;
     string dataOutputPath;
     List<string> output;
 
@@ -37,7 +37,7 @@ public class TrialLogger : MonoBehaviour {
 
     public void Initialize(string participantID, List<string> customHeader)
     {
-        ppid = participantID;
+        playerName = participantID;
         header = customHeader;
         InitHeader();
         InitDict();
@@ -48,10 +48,7 @@ public class TrialLogger : MonoBehaviour {
 
     private void InitHeader()
     {
-        header.Insert(0, "number");
-        header.Insert(1, "ppid");
-        header.Insert(2, "start_time");
-        header.Insert(3, "end_time");
+        header.Insert(0, "Player");
     }
 
     private void InitDict()
@@ -66,12 +63,9 @@ public class TrialLogger : MonoBehaviour {
     public void StartTrial()
     {
         trialStarted = true;
-        seconds += 1;
+        //seconds += 1;
         InitDict();
-        timePassed = TSTS(seconds);
-        trial["Time"] = timePassed;
-        trial["ppid"] = ppid;
-        trial["start_time"] = Time.time.ToString();
+        trial["Player"] = playerName;
     }
 
     public void EndTrial()
@@ -80,7 +74,7 @@ public class TrialLogger : MonoBehaviour {
         {
             if (trialStarted)
             {
-                trial["end_time"] = Time.time.ToString();
+                //trial["end_time"] = Time.time.ToString();
                 output.Add(FormatTrialData());
                 trialStarted = false;
             }
@@ -112,10 +106,5 @@ public class TrialLogger : MonoBehaviour {
         }
         else Debug.LogError("Error saving data - TrialLogger was not initialsed properly");
         
-    }
-
-    private string TSTS(float f_secs)
-    {
-        return TimeSpan.FromSeconds((double)new decimal(f_secs)).ToString();
     }
 }

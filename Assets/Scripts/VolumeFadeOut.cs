@@ -12,6 +12,13 @@ public class VolumeFadeOut : MonoBehaviour
         if (invoked)
         {
             GetComponent<AudioSource>().volume -= Time.deltaTime * fadeRate;
+
+            if(GetComponent<AudioSource>().volume < 0)
+            {
+                invoked = false;
+                GetComponent<AudioSource>().Stop();
+                GetComponent<AudioSource>().volume = 0.75f;
+            }
         }
     }
 

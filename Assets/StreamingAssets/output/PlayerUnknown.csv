@@ -1,0 +1,13 @@
+Player,Task #,Task Time,Time Passed,Total Time
+PlayerUnknown,Task 1,00:00:04.9260000,00:00:04.9260000,
+PlayerUnknown,Task 2,00:00:02.7910000,00:00:07.7170000,
+PlayerUnknown,Task 3,00:00:02.4630000,00:00:10.1800000,
+PlayerUnknown,All,,,00:00:10.1800000
+PlayerUnknown,Task 1,00:00:03.1000000,00:00:03.1000000,
+PlayerUnknown,Task 2,00:00:02.3570000,00:00:05.4560000,
+PlayerUnknown,Task 3,00:00:02.2220000,00:00:07.6790000,
+PlayerUnknown,All,,,00:00:07.6790000
+PlayerUnknown,Task 1,00:00:01.5580000,00:00:01.5580000,
+PlayerUnknown,Task 2,00:00:01.3440000,00:00:02.9030000,
+PlayerUnknown,Task 3,00:00:01.0100000,00:00:03.9130000,
+PlayerUnknown,All,,,00:00:03.9130000

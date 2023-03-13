@@ -5,6 +5,9 @@ using UnityEngine;
 public class TrackTime : MonoBehaviour
 {
     public GameEventFloat reportNewResult;
+    public GameEventFloat reportResult1;
+    public GameEventFloat reportResult2;
+    public GameEventFloat reportResult3;
     private bool isRunning = false;
     public float timePassed = 0f;
 
@@ -37,5 +40,20 @@ public class TrackTime : MonoBehaviour
     private void ReportResult(float result)
     {
         reportNewResult.Raise(result);
+    }
+
+    public void ReportResultOne()
+    {
+        reportResult1.Raise(timePassed);
+    }
+
+    public void ReportResultTwo()
+    {
+        reportResult2.Raise(timePassed);
+    }
+
+    public void ReportResultThree()
+    {
+        reportResult3.Raise(timePassed);
     }
 }
