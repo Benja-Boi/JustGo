@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using CSharpObjects;
 using ScriptableObjects;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public class ScoreManager : MonoBehaviour
     public void RegisterScore(float score)
     {
         Debug.Log("New Score: " + score);
-        sd.RegisterScore(new ScoreVariable(score, "Danny Seidner"));
+        sd.RegisterScore(new ScoreObject(score, "Danny Seidner"));
         sd.PrintScores();
     }
 }

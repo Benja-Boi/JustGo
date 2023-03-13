@@ -1,16 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CSharpObjects;
 using UnityEngine;
 
 namespace ScriptableObjects
 {
     [CreateAssetMenu]
+    [Serializable]
     public class ScoreData : ScriptableObject
     {
-        public List<ScoreVariable> scores = new List<ScoreVariable>();
+        public List<ScoreObject> scores = new List<ScoreObject>();
 
-        public void RegisterScore(ScoreVariable newScore)
+        public void RegisterScore(ScoreObject newScore)
         {
             scores.Add(newScore);
             scores.Sort((x, y) => x.Value.TotalSeconds.CompareTo(y.Value.TotalSeconds));
@@ -29,7 +31,7 @@ namespace ScriptableObjects
 
         public void PrintScores()
         {
-            foreach (ScoreVariable score in scores)
+            foreach (ScoreObject score in scores)
             {
                 Debug.Log(score.playerName + " : " + score.Value.ToString(@"hh\:mm\:ss"));
             }
